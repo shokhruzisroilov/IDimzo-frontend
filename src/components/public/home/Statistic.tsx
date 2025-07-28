@@ -6,7 +6,7 @@ const Statistic = () => {
 	return (
 		<section className=' px-4 py-14 overflow-hidden'>
 			<div className='max-w-[1340px] mx-auto flex flex-col-reverse md:flex-row items-start gap-10 md:gap-20'>
-				{/* Rasm qismi */}
+				{/* Image section */}
 				<div
 					className='w-full md:w-1/2 flex justify-center min-w-0'
 					data-aos='fade-left'
@@ -19,7 +19,7 @@ const Statistic = () => {
 					/>
 				</div>
 
-				{/* Matn qismi */}
+				{/* Text section */}
 				<div
 					className='w-full md:w-1/2 text-start md:text-left'
 					data-aos='fade-right'

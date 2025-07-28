@@ -17,13 +17,13 @@ export default function AgreementPage() {
 	}
 
 	return (
-		<div className='min-h-screen bg-white px-4 py-12 flex flex-col items-center'>
+		<div className='flex-1 w-full overflow-hidden flex items-center justify-center bg-white px-4 py-12'>
 			<div className='w-full'>
 				<h1 className='text-4xl font-bold text-center text-neutral-800 mb-8 '>
 					Пользовательское соглашение
 				</h1>
 
-				<div className='h-[700px] overflow-y-scroll p-8 rounded-xl border border-gray-300 shadow-sm text-[17px] leading-relaxed text-neutral-800 space-y-6'>
+				<div className='h-[500px] overflow-y-scroll p-8 rounded-xl border border-gray-300 shadow-sm text-[17px] leading-relaxed text-neutral-800 space-y-6'>
 					<p>
 						<b>1.1.</b> Общество с Ограниченной Ответственностью «Norma» в лице
 						директора Перпера М.М., именуемое в дальнейшем «Правообладатель»,

@@ -63,10 +63,13 @@ const Navbar = () => {
 						<option>RU</option>
 					</select>
 
-					<button className='flex items-center gap-2 px-4 py-2 bg-primary hover:bg-blue-700 text-white text-sm rounded-md transition'>
+					<Link
+						href={'/login'}
+						className='flex items-center gap-2 px-4 py-2 bg-primary hover:bg-blue-700 text-white text-sm rounded-md transition'
+					>
 						<User size={18} />
 						<span>Shaxsiy kabinet</span>
-					</button>
+					</Link>
 				</div>
 			</div>
 
@@ -108,10 +111,13 @@ const Navbar = () => {
 						<option>RU</option>
 					</select>
 
-					<button className='flex items-center justify-center gap-2 px-4 py-2 bg-primary hover:bg-blue-700 text-white text-sm rounded-md transition'>
+					<Link
+						href='/login'
+						className='flex items-center justify-center gap-2 px-4 py-2 bg-primary hover:bg-blue-700 text-white text-sm rounded-md transition'
+					>
 						<User size={18} />
 						<span>Shaxsiy kabinet</span>
-					</button>
+					</Link>
 				</div>
 			</div>
 		</nav>

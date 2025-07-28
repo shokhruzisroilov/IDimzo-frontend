@@ -6,26 +6,29 @@ import Statistic from '@/components/public/home/Statistic'
 import Footer from '@/components/public/common/Footer'
 import Interface from '@/components/public/home/Interface'
 import Contact from '@/components/public/home/Contact'
+import AOSWrapper from '@/components/public/common/AOSWrapper'
 
 export default function HomePage() {
 	return (
-		<div className='overflow-hidden'>
-			<Navbar />
-			<section>
-				<Header />
-			</section>
-			<section id='about'>
-				<About />
-			</section>
-			<section id='news'>
-				<Function />
-			</section>
-			<section id='contact'>
-				<Contact />
-			</section>
-			<Interface />
-			<Statistic />
-			<Footer />
-		</div>
+		<AOSWrapper>
+			<div>
+				<Navbar />
+				<section>
+					<Header />
+				</section>
+				<section id='about'>
+					<About />
+				</section>
+				<section id='news'>
+					<Function />
+				</section>
+				<section id='contact'>
+					<Contact />
+				</section>
+				<Interface />
+				<Statistic />
+				<Footer />
+			</div>
+		</AOSWrapper>
 	)
 }

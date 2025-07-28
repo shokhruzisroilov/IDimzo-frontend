@@ -7,12 +7,10 @@ export default function AuthLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<html lang='en'>
-			<body className='w-full min-h-screen flex flex-col justify-between items-center'>
-				<Navbar />
-				<main>{children}</main>
-				<Footer />
-			</body>
-		</html>
+		<div className='min-h-screen flex flex-col overflow-hidden'>
+			<Navbar />
+			<main className='flex-1 w-full overflow-hidden'>{children}</main>
+			<Footer />
+		</div>
 	)
 }
