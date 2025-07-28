@@ -66,7 +66,7 @@ export default function AdminDashboard() {
 			</div>
 
 			{/* Stats Section */}
-			<div className='grid grid-cols-1 md:grid-cols-4 gap-4'>
+			<div className='grid grid-cols-1 md:grid-cols-4 gap-4 mt-10'>
 				{stats.map((stat, index) => (
 					<div
 						key={index}

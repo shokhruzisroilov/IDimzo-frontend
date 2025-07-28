@@ -24,8 +24,18 @@ const authSlice = createSlice({
 	name: 'auth',
 	initialState,
 	reducers: {
-		setPhone: (state, action: PayloadAction<string>) => {
+		setPhoneStart: state => {
+			state.isLoading = true
+			state.error = null
+		},
+		setPhoneSuccess: (state, action: PayloadAction<string>) => {
 			state.phone = action.payload
+			state.isLoading = false
+			state.error = null
+		},
+		setPhoneFailure: (state, action: PayloadAction<string>) => {
+			state.isLoading = false
+			state.error = action.payload
 		},
 		loginStart: state => {
 			state.isLoading = true
@@ -56,7 +66,14 @@ const authSlice = createSlice({
 	},
 })
 
-export const { setPhone, loginStart, loginSuccess, loginFailure, logout } =
-	authSlice.actions
+export const {
+	setPhoneStart,
+	setPhoneSuccess,
+	setPhoneFailure,
+	loginStart,
+	loginSuccess,
+	loginFailure,
+	logout,
+} = authSlice.actions
 
 export default authSlice.reducer

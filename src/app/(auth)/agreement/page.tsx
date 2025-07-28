@@ -10,7 +10,6 @@ export default function AgreementPage() {
 	const handleAgree = () => {
 		setAgreed(true)
 
-		// 1-2 soniyadan keyin login sahifaga yo‘naltiramiz
 		setTimeout(() => {
 			router.push('/login')
 		}, 100)

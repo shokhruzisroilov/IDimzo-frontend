@@ -2,12 +2,24 @@
 
 import Image from 'next/image'
 import Logo from '../../../assets/icons/logo.png'
-import { User, Menu, X } from 'lucide-react'
+import { User, X } from 'lucide-react'
 import { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 const Navbar = () => {
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+	const router = useRouter()
+
+	const handleRedirect = () => {
+		const token =
+			typeof window !== 'undefined' ? localStorage.getItem('accessToken') : null
+		if (token) {
+			router.push('/admin')
+		} else {
+			router.push('/login')
+		}
+	}
 
 	return (
 		<nav className='w-full px-4 bg-white shadow-sm sticky top-0 z-50'>
@@ -47,14 +59,6 @@ const Navbar = () => {
 					</li>
 				</ul>
 
-				{/* Mobile Hamburger */}
-				<button
-					onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-					className='lg:hidden focus:outline-none'
-				>
-					{isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-				</button>
-
 				{/* Language & User (Desktop) */}
 				<div className='hidden lg:flex items-center gap-4'>
 					<select className='border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none'>
@@ -63,13 +67,13 @@ const Navbar = () => {
 						<option>RU</option>
 					</select>
 
-					<Link
-						href={'/login'}
+					<button
+						onClick={handleRedirect}
 						className='flex items-center gap-2 px-4 py-2 bg-primary hover:bg-blue-700 text-white text-sm rounded-md transition'
 					>
 						<User size={18} />
 						<span>Shaxsiy kabinet</span>
-					</Link>
+					</button>
 				</div>
 			</div>
 
@@ -82,22 +86,22 @@ const Navbar = () => {
 				}`}
 			>
 				<ul className='flex flex-col gap-3 text-gray-700 font-medium pt-2'>
-					<li onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+					<li onClick={() => setIsMobileMenuOpen(false)}>
 						<a href='#' className='hover:text-primary'>
 							Bosh sahifa
 						</a>
 					</li>
-					<li onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+					<li onClick={() => setIsMobileMenuOpen(false)}>
 						<a href='#about' className='hover:text-primary'>
 							Biz haqimizda
 						</a>
 					</li>
-					<li onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+					<li onClick={() => setIsMobileMenuOpen(false)}>
 						<a href='#news' className='hover:text-primary'>
 							Yangiliklar
 						</a>
 					</li>
-					<li onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+					<li onClick={() => setIsMobileMenuOpen(false)}>
 						<a href='#contact' className='hover:text-primary'>
 							Biz bilan bog’lanish
 						</a>
@@ -111,13 +115,13 @@ const Navbar = () => {
 						<option>RU</option>
 					</select>
 
-					<Link
-						href='/login'
+					<button
+						onClick={handleRedirect}
 						className='flex items-center justify-center gap-2 px-4 py-2 bg-primary hover:bg-blue-700 text-white text-sm rounded-md transition'
 					>
 						<User size={18} />
 						<span>Shaxsiy kabinet</span>
-					</Link>
+					</button>
 				</div>
 			</div>
 		</nav>
