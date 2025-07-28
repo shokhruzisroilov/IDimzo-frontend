@@ -98,6 +98,7 @@ export default function VerifyPage() {
 			setError('Kod noto‘g‘ri yoki serverda muammo bor.')
 			dispatch(loginFailure('Kod noto‘g‘ri'))
 			toast.error('Kod xato yoki serverda xatolik.')
+			console.log(err)
 		}
 	}
 
@@ -111,6 +112,7 @@ export default function VerifyPage() {
 			inputRefs.current[0]?.focus()
 		} catch (err) {
 			toast.error('Kod yuborilmadi.')
+			console.log(err)
 		}
 	}
 
