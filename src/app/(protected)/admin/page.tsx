@@ -7,7 +7,7 @@ import { getNews } from '@/redux/slices/newsSlice'
 
 import { LayoutDashboard, FileText, BookOpen, User } from 'lucide-react'
 
-// Skeleton loading card component
+// Skeleton yuklanayotgan holat
 const NewsCardSkeleton = () => (
 	<div className='w-[100px] h-[200px] flex flex-col items-center justify-center animate-pulse'>
 		<div className='w-[100px] h-[150px] bg-gray-300 rounded mb-2'></div>
@@ -27,30 +27,30 @@ export default function AdminDashboard() {
 
 	const stats = [
 		{
-			title: 'Количество контрактов',
+			title: 'Shartnomalar soni',
 			count: 4,
-			time: 'объявлено 5 мин назад',
+			time: '5 daqiqa oldin eʼlon qilingan',
 			bgColor: 'bg-yellow-400',
 			icon: LayoutDashboard,
 		},
 		{
-			title: 'Дата окончания срока',
+			title: 'Tugash muddati',
 			count: 3,
-			time: 'объявлено через 10 дней',
+			time: '10 kun ichida tugaydi',
 			bgColor: 'bg-blue-400',
 			icon: BookOpen,
 		},
 		{
-			title: 'Растрогнутый контракт',
+			title: 'Bekor qilingan shartnoma',
 			count: 1,
-			time: 'объявлено 5 дней назад',
+			time: '5 kun oldin bekor qilingan',
 			bgColor: 'bg-blue-400',
 			icon: FileText,
 		},
 		{
-			title: 'В процессе',
+			title: 'Jarayonda',
 			count: 1,
-			time: 'объявлено 15 мин назад',
+			time: '15 daqiqa oldin boshlangan',
 			bgColor: 'bg-yellow-400',
 			icon: User,
 		},
@@ -58,13 +58,15 @@ export default function AdminDashboard() {
 
 	return (
 		<div className='p-4 sm:p-6'>
-			{/* News Section */}
+			{/* Yangiliklar bo‘limi */}
 			<div className='flex gap-10 overflow-x-auto'>
 				{isLoading &&
 					Array.from({ length: 5 }).map((_, idx) => (
 						<NewsCardSkeleton key={idx} />
 					))}
+
 				{!isLoading && error && <p className='text-red-500'>{error}</p>}
+
 				{!isLoading && data.length === 0 && <p>Yangiliklar topilmadi</p>}
 
 				{!isLoading &&
@@ -84,7 +86,7 @@ export default function AdminDashboard() {
 					))}
 			</div>
 
-			{/* Stats Section */}
+			{/* Statistika bo‘limi */}
 			<div className='grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-4 mt-10'>
 				{stats.map((stat, index) => (
 					<div
