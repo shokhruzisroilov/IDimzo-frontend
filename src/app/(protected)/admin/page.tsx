@@ -1,20 +1,29 @@
 'use client'
 
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { AppDispatch, RootState } from '@/redux/store'
+import { getNews } from '@/redux/slices/newsSlice'
+
 import { LayoutDashboard, FileText, BookOpen, User } from 'lucide-react'
-import first from '../../../assets/images/1.png'
-import second from '../../../assets/images/2.png'
-import thirt from '../../../assets/images/3.png'
-import forth from '../../../assets/images/4.png'
-import fifth from '../../../assets/images/5.png'
+
+// Skeleton loading card component
+const NewsCardSkeleton = () => (
+	<div className='w-[100px] h-[200px] flex flex-col items-center justify-center animate-pulse'>
+		<div className='w-[100px] h-[150px] bg-gray-300 rounded mb-2'></div>
+		<div className='w-20 h-4 bg-gray-300 rounded'></div>
+	</div>
+)
 
 export default function AdminDashboard() {
-	const services = [
-		{ name: 'Biz', url: first },
-		{ name: 'Yangilik', url: second },
-		{ name: 'Mygov.uz', url: thirt },
-		{ name: 'ONE ID', url: forth },
-		{ name: 'ID karta', url: fifth },
-	]
+	const dispatch = useDispatch<AppDispatch>()
+	const { data, isLoading, error } = useSelector(
+		(state: RootState) => state.news
+	)
+
+	useEffect(() => {
+		dispatch(getNews())
+	}, [dispatch])
 
 	const stats = [
 		{
@@ -49,20 +58,30 @@ export default function AdminDashboard() {
 
 	return (
 		<div className='p-4 sm:p-6'>
-			{/* Services Section */}
-			<div className='flex gap-10'>
-				{services.map((service, index) => (
-					<div
-						key={index}
-						className='w-[100px] h-[200px]  rounded-lg flex flex-col items-center justify-center '
-					>
+			{/* News Section */}
+			<div className='flex gap-10 overflow-x-auto'>
+				{isLoading &&
+					Array.from({ length: 5 }).map((_, idx) => (
+						<NewsCardSkeleton key={idx} />
+					))}
+				{!isLoading && error && <p className='text-red-500'>{error}</p>}
+				{!isLoading && data.length === 0 && <p>Yangiliklar topilmadi</p>}
+
+				{!isLoading &&
+					data.map((item, index) => (
 						<div
-							className='w-[100px] h-[150px] mb-4 bg-no-repeat bg-center bg-contain'
-							style={{ backgroundImage: `url(${service.url.src})` }}
-						/>
-						<span className='text-sm'>{service.name}</span>
-					</div>
-				))}
+							key={index}
+							className='w-[100px] h-[200px] rounded-lg flex flex-col items-center justify-center'
+						>
+							<div
+								className='w-[100px] h-[150px] mb-4 bg-no-repeat bg-center bg-cover rounded-[20px] border-2 border-[#007BFF]'
+								style={{ backgroundImage: `url(${item.mediaUrl})` }}
+							/>
+							<span className='text-sm text-center line-clamp-2'>
+								{item.title.uz}
+							</span>
+						</div>
+					))}
 			</div>
 
 			{/* Stats Section */}

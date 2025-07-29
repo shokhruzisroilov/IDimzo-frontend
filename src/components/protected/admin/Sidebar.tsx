@@ -24,7 +24,7 @@ export default function Sidebar() {
 
 	const profileSubItems = [
 		{ href: '/admin/profile/info', label: 'My Info' },
-		{ href: '/admin/profile/settings', label: 'Settings' },
+		{ href: '/admin/profile/payment-info', label: 'Payment Info' },
 	]
 
 	return (

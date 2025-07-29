@@ -6,7 +6,7 @@ import logo from '@/assets/icons/logo.png'
 
 const Navbar = () => {
 	return (
-		<nav className='w-full bg-white shadow-md px-6 py-4'>
+		<nav className='w-full bg-white px-6 py-4'>
 			<div className='flex justify-between items-center'>
 				{/* Logo */}
 				<Link href='/admin' className='flex items-center gap-2'>
