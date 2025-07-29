@@ -3,13 +3,18 @@ import { getItem, setItem, removeItem } from '../helpers/persistanceStorage'
 import AuthService from './AuthService'
 
 let isRefreshing = false
-let failedQueue: any[] = []
+type FailedRequest = {
+	resolve: (token: string) => void
+	reject: (error: unknown) => void
+}
 
-const processQueue = (error: any, token: string | null = null) => {
+let failedQueue: FailedRequest[] = []
+
+const processQueue = (error: unknown, token: string | null = null) => {
 	failedQueue.forEach(prom => {
 		if (error) {
 			prom.reject(error)
-		} else {
+		} else if (token) {
 			prom.resolve(token)
 		}
 	})
