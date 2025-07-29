@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import Navbar from '@/components/protected/common/Navbar'
 import Loading from './admin/loading'
 import { getItem } from '@/helpers/persistanceStorage'
+import Footer from '@/components/protected/common/Footer'
 
 export default function ProtectedLayout({ children }: { children: ReactNode }) {
 	const router = useRouter()
@@ -26,6 +27,7 @@ export default function ProtectedLayout({ children }: { children: ReactNode }) {
 		<div className='flex flex-col min-h-screen'>
 			<Navbar />
 			<main className='flex-grow'>{children}</main>
+			<Footer />
 		</div>
 	)
 }

@@ -48,7 +48,7 @@ export default function AdminDashboard() {
 	]
 
 	return (
-		<div className='p-6'>
+		<div className='p-4 sm:p-6'>
 			{/* Services Section */}
 			<div className='flex gap-10'>
 				{services.map((service, index) => (
@@ -66,11 +66,11 @@ export default function AdminDashboard() {
 			</div>
 
 			{/* Stats Section */}
-			<div className='grid grid-cols-1 md:grid-cols-4 gap-4 mt-10'>
+			<div className='grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-4 mt-10'>
 				{stats.map((stat, index) => (
 					<div
 						key={index}
-						className={`${stat.bgColor} text-white p-4 rounded-lg flex flex-col items-center justify-center`}
+						className={`${stat.bgColor} text-white p-4 rounded-lg flex flex-col items-center justify-center text-center`}
 					>
 						<stat.icon className='w-8 h-8 mb-2' />
 						<h3 className='text-lg font-semibold'>{stat.title}</h3>

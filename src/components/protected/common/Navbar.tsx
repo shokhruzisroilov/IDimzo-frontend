@@ -24,7 +24,7 @@ const Navbar = () => {
 					</div>
 
 					{/* Phone Number */}
-					<div className='flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors duration-200'>
+					<div className='hidden lg:flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors duration-200'>
 						<FaPhoneAlt className='text-blue-600' />
 						<span className='font-medium'>+998 71 200 29 00</span>
 					</div>
