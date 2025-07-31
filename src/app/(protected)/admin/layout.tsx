@@ -6,13 +6,10 @@ import Sidebar from '@/components/protected/admin/Sidebar'
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
 	return (
-		<div className='flex flex-col min-h-screen'>
-			<div className='flex-1 flex lg:flex-row'>
-				<Sidebar />
-				<div className='flex-1'>
-					<main className='p-4 pb-32'>{children}</main> <BottomNav />
-				</div>
-			</div>
+		<div className='w-full flex'>
+			<Sidebar />
+			<main className='w-[85%] max-lg:w-[100%] p-4 pb-32'>{children}</main>
+			<BottomNav />
 		</div>
 	)
 }

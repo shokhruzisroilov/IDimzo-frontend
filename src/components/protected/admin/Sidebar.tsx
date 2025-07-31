@@ -17,18 +17,18 @@ export default function Sidebar() {
 	const [isProfileOpen, setIsProfileOpen] = useState(false)
 
 	const navItems = [
-		{ href: '/admin', label: 'Dashboard', exact: true, icon: House },
-		{ href: '/admin/documents', label: 'Documents', icon: FileText },
-		{ href: '/admin/story', label: 'History', icon: History },
+		{ href: '/admin', label: 'Bosh sahifa', exact: true, icon: House },
+		{ href: '/admin/documents', label: 'Hujjatlar', icon: FileText },
+		{ href: '/admin/story', label: 'Tarix', icon: History },
 	]
 
 	const profileSubItems = [
-		{ href: '/admin/profile/info', label: 'My Info' },
-		{ href: '/admin/profile/payment-info', label: 'Payment Info' },
+		{ href: '/admin/profile/info', label: 'Shaxsiy maʼlumotlar' },
+		{ href: '/admin/profile/payment-info', label: 'Toʻlov tarixi' },
 	]
 
 	return (
-		<aside className='hidden lg:block min-h-screen w-64 bg-gray-100 py-10 px-5'>
+		<aside className='hidden lg:block min-h-screen w-[15%] min-w-[215px] bg-gray-100 py-10 px-5'>
 			<ul className='space-y-2'>
 				{navItems.map(item => (
 					<li key={item.href}>
@@ -64,7 +64,7 @@ export default function Sidebar() {
 					>
 						<span className='flex items-center space-x-2'>
 							<User className='w-5 h-5' />
-							<span>Profile</span>
+							<span>Profil</span>
 						</span>
 						{isProfileOpen ? (
 							<ChevronDown className='w-5 h-5' />
@@ -72,6 +72,7 @@ export default function Sidebar() {
 							<ChevronRight className='w-5 h-5' />
 						)}
 					</button>
+
 					{isProfileOpen && (
 						<ul className='ml-8 mt-1 space-y-1'>
 							{profileSubItems.map(sub => (

@@ -144,11 +144,7 @@ const Footer = () => {
 				</div>
 
 				{/* Bottom Line */}
-				<div
-					className='border-t border-gray-200 mt-12 pt-6 text-center text-sm text-gray-500'
-					data-aos='fade-up'
-					data-aos-delay='500'
-				>
+				<div className='border-t border-gray-200 mt-12 pt-6 text-center text-sm text-gray-500'>
 					&copy; &quot;ID-imzo&quot;, 2025 - 2026. Barcha huquqlar himoyalangan.
 				</div>
 			</div>

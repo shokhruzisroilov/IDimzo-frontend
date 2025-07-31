@@ -52,14 +52,26 @@ const PaymentInfo = () => {
 				{/* Call Center Box */}
 				<div className='w-full lg:w-1/3 bg-slate-100 rounded-[10px] p-6 space-y-4'>
 					<h3 className='text-xl font-medium'>Call markazi</h3>
-					<div className='flex items-center gap-2'>
+
+					{/* Telefon raqami havola */}
+					<a
+						href='tel:+998712002900'
+						className='flex items-center gap-2 hover:underline'
+					>
 						<div className='w-5 h-5 border-2 border-sky-500 rounded-full'></div>
 						<p className='text-base text-sky-500'>+998 71 200 29 00</p>
-					</div>
-					<div className='flex items-center gap-2'>
+					</a>
+
+					{/* Telegram bot havola */}
+					<a
+						href='https://t.me/Id_imzo_bot'
+						target='_blank'
+						rel='noopener noreferrer'
+						className='flex items-center gap-2 hover:underline'
+					>
 						<div className='w-5 h-5 border-2 border-sky-500 rounded-full'></div>
 						<p className='text-base text-sky-500'>@Id_imzo_bot</p>
-					</div>
+					</a>
 				</div>
 			</div>
 		</div>

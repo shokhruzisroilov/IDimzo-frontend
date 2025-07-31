@@ -3,8 +3,8 @@
 import { useEffect, useState } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import { getItem } from '@/helpers/persistanceStorage'
-import Footer from '@/components/auth/Footer'
-import Navbar from '@/components/auth/Navbar'
+import Footer from '@/components/auth/common/Footer'
+import Navbar from '@/components/auth/common/Navbar'
 
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {
 	const router = useRouter()

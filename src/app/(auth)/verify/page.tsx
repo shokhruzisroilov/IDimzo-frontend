@@ -22,7 +22,16 @@ export default function VerifyPage() {
 	const router = useRouter()
 	const dispatch = useDispatch()
 
-	// Countdown logic
+	useEffect(() => {
+		if (!phone) {
+			router.push('/login')
+			return
+		}
+
+		// bo'lsa birinchi inputga fokus
+		inputRefs.current[0]?.focus()
+	}, [phone, router])
+
 	useEffect(() => {
 		if (timer > 0) {
 			const interval = setInterval(() => {
@@ -34,7 +43,6 @@ export default function VerifyPage() {
 		}
 	}, [timer])
 
-	// Focus next input
 	const handleInputChange = (value: string, index: number) => {
 		if (!/^\d*$/.test(value)) return
 		const newCode = [...code]
@@ -45,7 +53,6 @@ export default function VerifyPage() {
 		}
 	}
 
-	// Handle keyboard navigation
 	const handleKeyDown = (
 		e: React.KeyboardEvent<HTMLInputElement>,
 		index: number
@@ -86,6 +93,7 @@ export default function VerifyPage() {
 			toast.error('Kod xato yoki serverda xatolik.')
 		}
 	}
+
 	const handleResend = async () => {
 		try {
 			await AuthService.sendCode(phone)
@@ -101,15 +109,17 @@ export default function VerifyPage() {
 	}
 
 	return (
-		<div className='flex-1 w-full overflow-hidden flex items-center justify-center bg-white py-20 px-4'>
-			<div className='w-[516px] h-[440px] relative bg-white rounded-[10px] shadow-[0px_0px_14px_0px_rgba(0,138,255,0.25)] p-10'>
-				<p className='text-2xl text-black font-bold mb-4'>Tasdiqlash kodi</p>
-				<p className='text-lg text-black mb-6'>
+		<div className='flex-1 w-full flex items-center justify-center bg-white px-4 py-10'>
+			<div className='w-full max-w-[516px] bg-white rounded-[10px] shadow-[0px_0px_14px_0px_rgba(0,138,255,0.25)] p-6 sm:p-10'>
+				<p className='text-xl sm:text-2xl text-black font-bold mb-4 text-center sm:text-left'>
+					Tasdiqlash kodi
+				</p>
+				<p className='text-base sm:text-lg text-black mb-6 text-center sm:text-left'>
 					<b>{phone}</b> raqamiga tasdiqlash kodi yuborildi. Iltimos, kodni
 					kiriting.
 				</p>
 
-				<div className='flex justify-between w-96 mx-auto mb-6'>
+				<div className='flex justify-center gap-3 sm:gap-4 mb-6'>
 					{code.map((value, index) => (
 						<input
 							key={index}
@@ -121,7 +131,7 @@ export default function VerifyPage() {
 							}}
 							onChange={e => handleInputChange(e.target.value, index)}
 							onKeyDown={e => handleKeyDown(e, index)}
-							className='w-14 h-14 text-center text-2xl text-black border-none outline-none bg-sky-500/10 rounded-[10px]'
+							className='w-12 h-12 sm:w-14 sm:h-14 text-center text-xl sm:text-2xl text-black border-none outline-none bg-sky-500/10 rounded-[10px]'
 						/>
 					))}
 				</div>
@@ -134,7 +144,7 @@ export default function VerifyPage() {
 						Kodni qayta yuborish
 					</p>
 				) : (
-					<p className='text-lg text-black text-center mb-4'>
+					<p className='text-sm sm:text-base text-black text-center mb-4'>
 						Qayta yuborish uchun {timer} soniya qoldi
 					</p>
 				)}
@@ -145,7 +155,7 @@ export default function VerifyPage() {
 
 				<button
 					onClick={handleVerify}
-					className={`w-full h-14 rounded-[10px] text-white text-lg font-semibold font-['Archivo_Black'] transition ${
+					className={`w-full h-12 sm:h-14 rounded-[10px] text-white text-base sm:text-lg font-semibold font-['Archivo_Black'] transition ${
 						isLoading
 							? 'bg-[#008AFF]/70 cursor-wait'
 							: code.every(c => c !== '')
